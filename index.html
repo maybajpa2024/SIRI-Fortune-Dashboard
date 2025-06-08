@@ -439,7 +439,7 @@
         <div id="setupInstructions" class="setup-instructions show">
             <h3>🔧 Setup Required: Connect Your Google Sheets</h3>
             <ol>
-                <li><strong>Sheet 1 (MaintenanceData):</strong> Flat payments (Flat, Mar2025, Apr2025, etc.)</li>
+                <li><strong>Sheet 1 (MaintenanceData):</strong> Flat payments (Flat, Mar2025, Apr2025, May2025)</li>
                 <li><strong>Sheet 2 (ExpenseData):</strong> Monthly expenses (Date, Category, Description, Amount, etc.)</li>
                 <li>Make both sheets public: "Anyone with link can view"</li>
                 <li>Get Sheet IDs from URLs and paste below</li>
@@ -447,11 +447,11 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
                 <div>
                     <label><strong>Maintenance Sheet ID:</strong></label>
-                    <input type="text" id="maintenanceSheetId" class="url-input" placeholder="Maintenance sheet ID (gid=0)" />
+                    <input type="text" id="maintenanceSheetId" class="url-input" placeholder="Maintenance sheet ID" value="12vNcqMhyoEnQiOIw0WcOLkLl6D754jpD_Asr0CEfiy8" />
                 </div>
                 <div>
                     <label><strong>Expense Sheet ID:</strong></label>
-                    <input type="text" id="expenseSheetId" class="url-input" placeholder="Expense sheet ID (gid=123456)" />
+                    <input type="text" id="expenseSheetId" class="url-input" placeholder="Expense sheet ID (gid)" value="1370079691" />
                 </div>
             </div>
             <button class="connect-btn" onclick="connectGoogleSheets()">Connect Both Sheets</button>
@@ -476,11 +476,11 @@
                 </div>
                 <div class="metric-card success">
                     <div class="metric-value" id="currentCollection">₹0</div>
-                    <div class="metric-label" id="currentCollectionLabel">Current Collections</div>
+                    <div class="metric-label" id="currentCollectionLabel">May Collections</div>
                 </div>
                 <div class="metric-card danger">
                     <div class="metric-value" id="currentExpenses">₹0</div>
-                    <div class="metric-label" id="currentExpensesLabel">Current Expenses</div>
+                    <div class="metric-label" id="currentExpensesLabel">May Expenses</div>
                 </div>
                 <div class="metric-card warning">
                     <div class="metric-value" id="collectionRate">0%</div>
@@ -497,10 +497,10 @@
             </div>
 
             <div class="financial-summary">
-                <h3 style="margin-bottom: 20px; color: #2c3e50;" id="financialSummaryTitle">📊 Current Month Financial Summary</h3>
+                <h3 style="margin-bottom: 20px; color: #2c3e50;" id="financialSummaryTitle">📊 May 2025 Financial Summary</h3>
                 <div class="financial-row">
-                    <span id="expectedIncomeLabel">Expected Income:</span>
-                    <span class="amount" id="expectedIncome">₹0</span>
+                    <span id="expectedIncomeLabel">Expected Income (37 × ₹2,500):</span>
+                    <span class="amount">₹92,500</span>
                 </div>
                 <div class="financial-row">
                     <span>Actual Collections:</span>
@@ -544,13 +544,11 @@
                             <th>Mar 2025</th>
                             <th>Apr 2025</th>
                             <th>May 2025</th>
-                            <th>Jun 2025</th>
-                            <th>Jul 2025</th>
                             <th>Total Paid</th>
                         </tr>
                     </thead>
                     <tbody id="paymentsTableBody">
-                        <tr><td colspan="7" class="loading">Connect Google Sheets to see payment data</td></tr>
+                        <tr><td colspan="5" class="loading">Connect Google Sheets to see payment data</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -562,7 +560,7 @@
             <div class="metrics-grid" style="margin-bottom: 30px;">
                 <div class="metric-card danger">
                     <div class="metric-value" id="monthlyExpenseTotal">₹0</div>
-                    <div class="metric-label" id="monthlyExpenseLabel">Current Month Expenses</div>
+                    <div class="metric-label" id="monthlyExpenseLabel">May Total Expenses</div>
                 </div>
                 <div class="metric-card warning">
                     <div class="metric-value" id="expenseCount">0</div>
@@ -575,7 +573,7 @@
             </div>
             
             <div class="chart-card">
-                <div class="chart-title" id="expenseTableTitle">Monthly Expenses Breakdown</div>
+                <div class="chart-title" id="expenseTableTitle">May 2025 Expenses Breakdown</div>
                 <table class="data-table" id="expensesTable">
                     <thead>
                         <tr>
@@ -611,12 +609,12 @@
             </div>
 
             <div class="chart-card">
-                <div class="chart-title" id="categoryTableTitle">Category-wise Monthly Expenses</div>
+                <div class="chart-title" id="categoryTableTitle">Category-wise May Expenses</div>
                 <table class="data-table" id="categoryTable">
                     <thead>
                         <tr>
                             <th>Category</th>
-                            <th id="categoryAmountHeader">Current Amount</th>
+                            <th id="categoryAmountHeader">May Amount</th>
                             <th>Number of Entries</th>
                             <th>Average per Entry</th>
                             <th>% of Total</th>
@@ -640,12 +638,17 @@
             <div class="chart-card">
                 <div class="chart-title">📧 Communication Templates</div>
                 <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 10px 0;" id="communicationTemplate">
-                    <h4 style="color: #2c3e50; margin-bottom: 10px;">For Pending Payments:</h4>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px;">For Pending Payments - May 2025:</h4>
                     <p style="line-height: 1.6; color: #555;">
-                        <strong>Subject:</strong> Maintenance Payment Confirmation Required<br><br>
+                        <strong>Subject:</strong> Maintenance Payment Reminder - May 2025<br><br>
                         Dear residents,<br><br>
-                        We kindly request confirmation of your maintenance payment for the current month.<br><br>
-                        Please confirm payment details or make payment if pending.<br><br>
+                        We kindly request payment of pending maintenance fees for May 2025 (₹2,500).<br><br>
+                        According to our records, the following flats have pending payments:<br>
+                        • Flat 201: All months pending<br>
+                        • Flat 501: All months pending<br>
+                        • Flat 502: All months pending<br>
+                        • Flat 505: April & May pending<br><br>
+                        Please make payment at the earliest convenience.<br><br>
                         Thank you for your cooperation.
                     </p>
                 </div>
@@ -656,24 +659,20 @@
             <div class="chart-card">
                 <div class="chart-title">🔗 Complete Google Sheets Setup Guide</div>
                 
-                <h3>Step 1: Create MaintenanceData Sheet</h3>
-                <p>Payment tracking sheet with this structure:</p>
+                <h3>Step 1: Your MaintenanceData Sheet Structure ✅</h3>
+                <p>Your current sheet structure is perfect:</p>
                 <table style="border-collapse: collapse; width: 100%; margin: 15px 0;">
                     <tr style="background: #f5f5f5;">
                         <th style="border: 1px solid #ddd; padding: 8px;">Flat</th>
                         <th style="border: 1px solid #ddd; padding: 8px;">Mar2025</th>
                         <th style="border: 1px solid #ddd; padding: 8px;">Apr2025</th>
                         <th style="border: 1px solid #ddd; padding: 8px;">May2025</th>
-                        <th style="border: 1px solid #ddd; padding: 8px;">Jun2025</th>
-                        <th style="border: 1px solid #ddd; padding: 8px;">Jul2025</th>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #ddd; padding: 8px;">101</td>
                         <td style="border: 1px solid #ddd; padding: 8px;">2500</td>
-                        <td style="border: 1px solid #ddd; padding: 8px;">0</td>
                         <td style="border: 1px solid #ddd; padding: 8px;">2500</td>
                         <td style="border: 1px solid #ddd; padding: 8px;">2500</td>
-                        <td style="border: 1px solid #ddd; padding: 8px;">0</td>
                     </tr>
                 </table>
 
@@ -703,28 +702,17 @@
                 <p>2. Set permission to "Viewer"</p>
                 <p>3. Get Sheet ID from URL</p>
 
-                <h3>Step 4: Get Sheet IDs</h3>
-                <p><strong>MaintenanceData:</strong> Usually gid=0 (first sheet)</p>
-                <p><strong>ExpenseData:</strong> Click expense tab, get gid from URL</p>
-
-                <h3>Step 5: Connect to Dashboard</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
-                    <div>
-                        <input type="text" id="setupMaintenanceId" class="url-input" placeholder="Maintenance Sheet ID" />
-                    </div>
-                    <div>
-                        <input type="text" id="setupExpenseId" class="url-input" placeholder="Expense Sheet ID" />
-                    </div>
-                </div>
-                <button class="connect-btn" onclick="connectFromSetup()">Connect Both Sheets</button>
+                <h3>Step 4: Test URLs</h3>
+                <p><strong>Maintenance:</strong> <a href="https://docs.google.com/spreadsheets/d/12vNcqMhyoEnQiOIw0WcOLkLl6D754jpD_Asr0CEfiy8/export?format=csv&gid=0" target="_blank">Test CSV Export</a></p>
+                <p><strong>Expense:</strong> <a href="https://docs.google.com/spreadsheets/d/12vNcqMhyoEnQiOIw0WcOLkLl6D754jpD_Asr0CEfiy8/export?format=csv&gid=1370079691" target="_blank">Test CSV Export</a></p>
 
                 <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 20px;">
                     <h4>💡 Pro Tips:</h4>
                     <ul>
-                        <li><strong>Payments:</strong> Use "0" for unpaid, "2500" for paid</li>
+                        <li><strong>Payments:</strong> Use "0" for unpaid, "2500" for paid, "1250" for half payment</li>
                         <li><strong>Expenses:</strong> Use YYYY-MM-DD date format</li>
                         <li><strong>Categories:</strong> Security, Utilities, Maintenance, Cleaning, etc.</li>
-                        <li><strong>Monthly Tracking:</strong> Use "May2025", "Jun2025" format</li>
+                        <li><strong>Monthly Tracking:</strong> Use "May2025" format in Month column</li>
                         <li><strong>Auto-refresh:</strong> Dashboard updates every 5 minutes</li>
                     </ul>
                 </div>
@@ -740,38 +728,11 @@
         let maintenanceSheetId = null;
         let expenseSheetId = null;
         let financialChart, expenseChart, monthlyFinancialChart, balanceChart;
-        let currentMonth = 'May2025'; // Will be dynamically determined
-        let currentMonthDisplay = 'May 2025';
-        let availableMonths = [];
-        let monthMapping = {
-            'Mar2025': { key: 'mar', display: 'March', short: 'Mar' },
-            'Apr2025': { key: 'apr', display: 'April', short: 'Apr' },
-            'May2025': { key: 'may', display: 'May', short: 'May' },
-            'Jun2025': { key: 'jun', display: 'June', short: 'Jun' },
-            'Jul2025': { key: 'jul', display: 'July', short: 'Jul' },
-            'Aug2025': { key: 'aug', display: 'August', short: 'Aug' },
-            'Sep2025': { key: 'sep', display: 'September', short: 'Sep' },
-            'Oct2025': { key: 'oct', display: 'October', short: 'Oct' },
-            'Nov2025': { key: 'nov', display: 'November', short: 'Nov' },
-            'Dec2025': { key: 'dec', display: 'December', short: 'Dec' }
-        };
 
         // Connect function
         function connectGoogleSheets() {
             const maintenanceInput = document.getElementById('maintenanceSheetId').value.trim();
             const expenseInput = document.getElementById('expenseSheetId').value.trim();
-            
-            if (!maintenanceInput || !expenseInput) {
-                alert('Please enter both sheet IDs');
-                return;
-            }
-
-            processConnection(maintenanceInput, expenseInput);
-        }
-
-        function connectFromSetup() {
-            const maintenanceInput = document.getElementById('setupMaintenanceId').value.trim();
-            const expenseInput = document.getElementById('setupExpenseId').value.trim();
             
             if (!maintenanceInput || !expenseInput) {
                 alert('Please enter both sheet IDs');
@@ -802,80 +763,6 @@
             return input;
         }
 
-        function determineCurrentMonth() {
-            // Find the latest month with payment data
-            const months = ['Mar2025', 'Apr2025', 'May2025', 'Jun2025', 'Jul2025', 'Aug2025', 'Sep2025', 'Oct2025', 'Nov2025', 'Dec2025'];
-            let latestMonth = 'Mar2025';
-            
-            if (Object.keys(paymentData).length > 0) {
-                const firstFlat = Object.keys(paymentData)[0];
-                const flatData = paymentData[firstFlat];
-                
-                // Check which months have columns in the data
-                availableMonths = [];
-                months.forEach(month => {
-                    const key = monthMapping[month]?.key;
-                    if (key && flatData.hasOwnProperty(key)) {
-                        availableMonths.push(month);
-                        latestMonth = month;
-                    }
-                });
-                
-                // If no payments made in latest month, find the most recent month with actual payments
-                for (let i = availableMonths.length - 1; i >= 0; i--) {
-                    const month = availableMonths[i];
-                    const key = monthMapping[month].key;
-                    const hasPayments = Object.values(paymentData).some(flat => flat[key] > 0);
-                    if (hasPayments) {
-                        latestMonth = month;
-                        break;
-                    }
-                }
-            }
-            
-            currentMonth = latestMonth;
-            currentMonthDisplay = monthMapping[currentMonth]?.display + ' 2025' || 'May 2025';
-            console.log('Current month determined:', currentMonth, currentMonthDisplay);
-        }
-
-        function updateDynamicLabels() {
-            // Update labels throughout the dashboard
-            document.getElementById('currentCollectionLabel').textContent = `${monthMapping[currentMonth]?.display} Collections`;
-            document.getElementById('currentExpensesLabel').textContent = `${monthMapping[currentMonth]?.display} Expenses`;
-            document.getElementById('financialSummaryTitle').textContent = `📊 ${currentMonthDisplay} Financial Summary`;
-            document.getElementById('monthlyExpenseLabel').textContent = `${monthMapping[currentMonth]?.display} Total Expenses`;
-            document.getElementById('expenseTableTitle').textContent = `${currentMonthDisplay} Expenses Breakdown`;
-            document.getElementById('categoryTableTitle').textContent = `Category-wise ${monthMapping[currentMonth]?.display} Expenses`;
-            document.getElementById('categoryAmountHeader').textContent = `${monthMapping[currentMonth]?.display} Amount`;
-            
-            // Update expected income calculation
-            const totalFlats = Object.keys(paymentData).length;
-            const expectedIncome = totalFlats * 2500;
-            document.getElementById('expectedIncomeLabel').textContent = `Expected Income (${totalFlats} × ₹2,500):`;
-            document.getElementById('expectedIncome').textContent = `₹${expectedIncome.toLocaleString()}`;
-        }
-
-        function updatePaymentsTableHeaders() {
-            const headerRow = document.getElementById('paymentsTableHeader');
-            if (!headerRow) return;
-            
-            let headerHtml = '<th>Flat</th>';
-            
-            availableMonths.forEach(month => {
-                const monthInfo = monthMapping[month];
-                headerHtml += `<th>${monthInfo.short} 2025</th>`;
-            });
-            
-            headerHtml += '<th>Total Paid</th>';
-            headerRow.innerHTML = headerHtml;
-            
-            // Update table body colspan if needed
-            const tbody = document.getElementById('paymentsTableBody');
-            if (tbody && tbody.innerHTML.includes('Connect Google Sheets')) {
-                tbody.innerHTML = `<tr><td colspan="${availableMonths.length + 2}" class="loading">Connect Google Sheets to see payment data</td></tr>`;
-            }
-        }
-
         async function loadDataFromGoogleSheets() {
             if (!maintenanceSheetId || !expenseSheetId) return;
 
@@ -884,19 +771,24 @@
                 
                 // Load maintenance data
                 const maintenanceUrl = `https://docs.google.com/spreadsheets/d/${maintenanceSheetId}/export?format=csv&gid=0`;
+                console.log('Fetching maintenance data from:', maintenanceUrl);
+                
                 const maintenanceResponse = await fetch(maintenanceUrl);
                 
                 if (!maintenanceResponse.ok) {
-                    throw new Error('Failed to fetch maintenance data. Check your maintenance sheet ID.');
+                    throw new Error(`Failed to fetch maintenance data. Status: ${maintenanceResponse.status}. Make sure your sheet is public.`);
                 }
                 
                 const maintenanceCsv = await maintenanceResponse.text();
+                console.log('Maintenance CSV received, length:', maintenanceCsv.length);
                 
                 // Load expense data
                 const expenseUrl = `https://docs.google.com/spreadsheets/d/${maintenanceSheetId}/export?format=csv&gid=${expenseSheetId}`;
-                const expenseResponse = await fetch(expenseUrl);
+                console.log('Fetching expense data from:', expenseUrl);
                 
+                const expenseResponse = await fetch(expenseUrl);
                 const expenseCsv = await expenseResponse.text();
+                console.log('Expense CSV received, length:', expenseCsv.length);
                 
                 // Parse maintenance data
                 const maintenanceParsed = Papa.parse(maintenanceCsv, {
@@ -905,6 +797,9 @@
                     dynamicTyping: true
                 });
 
+                console.log('Parsed maintenance data:', maintenanceParsed.data.length, 'rows');
+                console.log('Sample row:', maintenanceParsed.data[0]);
+
                 // Parse expense data
                 const expenseParsed = Papa.parse(expenseCsv, {
                     header: true,
@@ -912,44 +807,42 @@
                     dynamicTyping: true
                 });
 
-                // Process maintenance data - dynamically map columns
+                console.log('Parsed expense data:', expenseParsed.data.length, 'rows');
+
+                // Process maintenance data - fix column mapping
                 paymentData = {};
+                let processedFlats = 0;
+                
                 maintenanceParsed.data.forEach(row => {
+                    console.log('Processing row:', row);
+                    
                     if (row.Flat) {
                         const flatNum = row.Flat.toString();
-                        paymentData[flatNum] = {};
-                        
-                        // Map all month columns that exist
-                        Object.keys(monthMapping).forEach(monthKey => {
-                            const monthInfo = monthMapping[monthKey];
-                            if (row.hasOwnProperty(monthKey)) {
-                                paymentData[flatNum][monthInfo.key] = parseFloat(row[monthKey]) || 0;
-                            }
-                        });
+                        paymentData[flatNum] = {
+                            mar: parseFloat(row.Mar2025) || 0,
+                            apr: parseFloat(row.Apr2025) || 0,
+                            may: parseFloat(row.May2025) || 0
+                        };
+                        processedFlats++;
                     }
                 });
 
+                console.log('Processed payment data for', processedFlats, 'flats');
+                console.log('Sample payment data:', Object.entries(paymentData).slice(0, 3));
+
                 // Process expense data
                 expenseData = expenseParsed.data.filter(row => row.Date && row.Amount);
+                console.log('Filtered expense data:', expenseData.length, 'valid entries');
 
-                console.log('Loaded:', Object.keys(paymentData).length, 'flats,', expenseData.length, 'expenses');
-                
-                if (Object.keys(paymentData).length === 0) {
-                    throw new Error('No payment data found. Check your maintenance sheet structure.');
+                if (processedFlats === 0) {
+                    throw new Error('No payment data found. Check your maintenance sheet has columns: Flat, Mar2025, Apr2025, May2025');
                 }
-
-                // Determine current month based on data
-                determineCurrentMonth();
                 
-                updateConnectionStatus('connected', `✅ Connected • ${Object.keys(paymentData).length} flats, ${expenseData.length} expenses`);
+                updateConnectionStatus('connected', `✅ Connected • ${processedFlats} flats, ${expenseData.length} expenses`);
                 isConnected = true;
                 
                 // Hide setup instructions
                 document.getElementById('setupInstructions').classList.remove('show');
-                
-                // Update dynamic labels
-                updateDynamicLabels();
-                updatePaymentsTableHeaders();
                 
                 // Update all components
                 updateMetrics();
@@ -987,39 +880,47 @@
 
         function updateMetrics() {
             const totalFlats = Object.keys(paymentData).length;
-            const currentMonthKey = monthMapping[currentMonth]?.key;
+            console.log('Updating metrics for', totalFlats, 'flats');
             
-            if (!currentMonthKey) return;
+            // Calculate May payments (latest month)
+            const mayPayments = Object.values(paymentData).filter(flat => flat.may > 0).length;
+            const collectionRate = totalFlats > 0 ? Math.round((mayPayments / totalFlats) * 100) : 0;
+            const totalCollected = Object.values(paymentData).reduce((sum, flat) => sum + (flat.may || 0), 0);
             
-            const currentMonthPayments = Object.values(paymentData).filter(flat => flat[currentMonthKey] > 0).length;
-            const collectionRate = totalFlats > 0 ? Math.round((currentMonthPayments / totalFlats) * 100) : 0;
-            const totalCollected = Object.values(paymentData).reduce((sum, flat) => sum + (flat[currentMonthKey] || 0), 0);
-            
-            // Calculate expenses for current month
-            const currentMonthExpenses = expenseData
-                .filter(expense => expense.Month === currentMonth)
+            // Calculate expenses for May 2025
+            const mayExpenses = expenseData
+                .filter(expense => expense.Month === 'May2025')
                 .reduce((sum, expense) => sum + (parseFloat(expense.Amount) || 0), 0);
             
-            const netBalance = totalCollected - currentMonthExpenses;
+            const netBalance = totalCollected - mayExpenses;
+            
+            console.log('Metrics calculated:', {
+                totalFlats,
+                mayPayments,
+                collectionRate,
+                totalCollected,
+                mayExpenses,
+                netBalance
+            });
             
             // Update metric cards
             document.getElementById('totalFlats').textContent = totalFlats;
             document.getElementById('currentCollection').textContent = `₹${totalCollected.toLocaleString()}`;
-            document.getElementById('currentExpenses').textContent = `₹${currentMonthExpenses.toLocaleString()}`;
+            document.getElementById('currentExpenses').textContent = `₹${mayExpenses.toLocaleString()}`;
             document.getElementById('collectionRate').textContent = `${collectionRate}%`;
             document.getElementById('netBalance').textContent = `₹${netBalance.toLocaleString()}`;
-            document.getElementById('pendingFlats').textContent = totalFlats - currentMonthPayments;
+            document.getElementById('pendingFlats').textContent = totalFlats - mayPayments;
             
             // Update financial summary
             document.getElementById('actualCollections').textContent = `₹${totalCollected.toLocaleString()}`;
-            document.getElementById('totalExpenses').textContent = `₹${currentMonthExpenses.toLocaleString()}`;
+            document.getElementById('totalExpenses').textContent = `₹${mayExpenses.toLocaleString()}`;
             document.getElementById('netSurplus').textContent = `₹${netBalance.toLocaleString()}`;
             
             // Update expense metrics
-            const expenseCount = expenseData.filter(expense => expense.Month === currentMonth).length;
-            const avgExpense = expenseCount > 0 ? Math.round(currentMonthExpenses / expenseCount) : 0;
+            const expenseCount = expenseData.filter(expense => expense.Month === 'May2025').length;
+            const avgExpense = expenseCount > 0 ? Math.round(mayExpenses / expenseCount) : 0;
             
-            document.getElementById('monthlyExpenseTotal').textContent = `₹${currentMonthExpenses.toLocaleString()}`;
+            document.getElementById('monthlyExpenseTotal').textContent = `₹${mayExpenses.toLocaleString()}`;
             document.getElementById('expenseCount').textContent = expenseCount;
             document.getElementById('avgExpense').textContent = `₹${avgExpense.toLocaleString()}`;
         }
@@ -1032,18 +933,17 @@
             
             Object.keys(paymentData).sort((a, b) => parseInt(a) - parseInt(b)).forEach(flat => {
                 const data = paymentData[flat];
-                let totalPaid = 0;
+                const totalPaid = data.mar + data.apr + data.may;
                 
-                html += `<tr><td><strong>Flat ${flat}</strong></td>`;
-                
-                availableMonths.forEach(month => {
-                    const key = monthMapping[month].key;
-                    const amount = data[key] || 0;
-                    totalPaid += amount;
-                    html += `<td><span class="status-${amount > 0 ? 'paid' : 'pending'}">${amount > 0 ? 'Paid' : 'Pending'}</span></td>`;
-                });
-                
-                html += `<td class="amount">₹${totalPaid.toLocaleString()}</td></tr>`;
+                html += `
+                    <tr>
+                        <td><strong>Flat ${flat}</strong></td>
+                        <td><span class="status-${data.mar > 0 ? 'paid' : 'pending'}">${data.mar > 0 ? '₹' + data.mar.toLocaleString() : 'Pending'}</span></td>
+                        <td><span class="status-${data.apr > 0 ? 'paid' : 'pending'}">${data.apr > 0 ? '₹' + data.apr.toLocaleString() : 'Pending'}</span></td>
+                        <td><span class="status-${data.may > 0 ? 'paid' : 'pending'}">${data.may > 0 ? '₹' + data.may.toLocaleString() : 'Pending'}</span></td>
+                        <td class="amount">₹${totalPaid.toLocaleString()}</td>
+                    </tr>
+                `;
             });
 
             tbody.innerHTML = html;
@@ -1051,33 +951,33 @@
 
         function populateExpensesTable() {
             const tbody = document.getElementById('expensesTableBody');
-            if (!tbody || expenseData.length === 0) return;
+            if (!tbody) return;
 
             let html = '';
             
-            // Filter for current month and sort by date
-            const currentMonthExpenses = expenseData
-                .filter(expense => expense.Month === currentMonth)
+            // Filter for May 2025 and sort by date
+            const mayExpenses = expenseData
+                .filter(expense => expense.Month === 'May2025')
                 .sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-            currentMonthExpenses.forEach(expense => {
-                const date = new Date(expense.Date).toLocaleDateString('en-IN');
-                const category = expense.Category || 'Other';
-                
-                html += `
-                    <tr>
-                        <td>${date}</td>
-                        <td><span class="expense-category">${category}</span></td>
-                        <td>${expense.Description || ''}</td>
-                        <td class="expense-amount">₹${(parseFloat(expense.Amount) || 0).toLocaleString()}</td>
-                        <td>${expense.Vendor || ''}</td>
-                        <td>${expense.Remarks || ''}</td>
-                    </tr>
-                `;
-            });
-
-            if (html === '') {
-                html = `<tr><td colspan="6" class="loading">No expenses found for ${currentMonthDisplay}</td></tr>`;
+            if (mayExpenses.length === 0) {
+                html = '<tr><td colspan="6" class="loading">No expenses found for May 2025. Add expenses to your ExpenseData sheet.</td></tr>';
+            } else {
+                mayExpenses.forEach(expense => {
+                    const date = new Date(expense.Date).toLocaleDateString('en-IN');
+                    const category = expense.Category || 'Other';
+                    
+                    html += `
+                        <tr>
+                            <td>${date}</td>
+                            <td><span class="expense-category">${category}</span></td>
+                            <td>${expense.Description || ''}</td>
+                            <td class="expense-amount">₹${(parseFloat(expense.Amount) || 0).toLocaleString()}</td>
+                            <td>${expense.Vendor || ''}</td>
+                            <td>${expense.Remarks || ''}</td>
+                        </tr>
+                    `;
+                });
             }
 
             tbody.innerHTML = html;
@@ -1090,26 +990,31 @@
             let html = '';
             let defaultersFound = false;
 
-            Object.keys(paymentData).forEach(flat => {
+            Object.keys(paymentData).sort((a, b) => parseInt(a) - parseInt(b)).forEach(flat => {
                 const data = paymentData[flat];
                 let pendingMonths = [];
+                let pendingAmount = 0;
                 
-                availableMonths.forEach(month => {
-                    const key = monthMapping[month].key;
-                    const monthDisplay = monthMapping[month].display;
-                    if ((data[key] || 0) === 0) {
-                        pendingMonths.push(monthDisplay);
-                    }
-                });
+                if (data.mar === 0) {
+                    pendingMonths.push('March');
+                    pendingAmount += 2500;
+                }
+                if (data.apr === 0) {
+                    pendingMonths.push('April');
+                    pendingAmount += 2500;
+                }
+                if (data.may === 0) {
+                    pendingMonths.push('May');
+                    pendingAmount += 2500;
+                }
 
                 if (pendingMonths.length > 0) {
                     defaultersFound = true;
-                    const pendingAmount = pendingMonths.length * 2500;
                     html += `
                         <div class="defaulter-card">
                             <div class="flat-number">Flat ${flat}</div>
                             <div class="pending-info">
-                                Pending: ${pendingMonths.join(', ')} | Amount: ₹${pendingAmount.toLocaleString()}
+                                Pending: ${pendingMonths.join(', ')} 2025 | Amount: ₹${pendingAmount.toLocaleString()}
                             </div>
                         </div>
                     `;
@@ -1125,13 +1030,13 @@
 
         function populateCategoryTable() {
             const tbody = document.getElementById('categoryTableBody');
-            if (!tbody || expenseData.length === 0) return;
+            if (!tbody) return;
 
-            // Group expenses by category for current month
-            const currentMonthExpenses = expenseData.filter(expense => expense.Month === currentMonth);
+            // Group expenses by category for May 2025
+            const mayExpenses = expenseData.filter(expense => expense.Month === 'May2025');
             const categoryTotals = {};
             
-            currentMonthExpenses.forEach(expense => {
+            mayExpenses.forEach(expense => {
                 const category = expense.Category || 'Other';
                 const amount = parseFloat(expense.Amount) || 0;
                 
@@ -1145,25 +1050,25 @@
             const totalExpenses = Object.values(categoryTotals).reduce((sum, cat) => sum + cat.total, 0);
             let html = '';
 
-            Object.entries(categoryTotals)
-                .sort((a, b) => b[1].total - a[1].total)
-                .forEach(([category, data]) => {
-                    const percentage = totalExpenses > 0 ? ((data.total / totalExpenses) * 100).toFixed(1) : 0;
-                    const average = data.count > 0 ? Math.round(data.total / data.count) : 0;
-                    
-                    html += `
-                        <tr>
-                            <td><span class="expense-category">${category}</span></td>
-                            <td class="expense-amount">₹${data.total.toLocaleString()}</td>
-                            <td>${data.count}</td>
-                            <td class="amount">₹${average.toLocaleString()}</td>
-                            <td>${percentage}%</td>
-                        </tr>
-                    `;
-                });
-
-            if (html === '') {
-                html = '<tr><td colspan="5" class="loading">No expense categories found</td></tr>';
+            if (Object.keys(categoryTotals).length === 0) {
+                html = '<tr><td colspan="5" class="loading">No expense categories found for May 2025</td></tr>';
+            } else {
+                Object.entries(categoryTotals)
+                    .sort((a, b) => b[1].total - a[1].total)
+                    .forEach(([category, data]) => {
+                        const percentage = totalExpenses > 0 ? ((data.total / totalExpenses) * 100).toFixed(1) : 0;
+                        const average = data.count > 0 ? Math.round(data.total / data.count) : 0;
+                        
+                        html += `
+                            <tr>
+                                <td><span class="expense-category">${category}</span></td>
+                                <td class="expense-amount">₹${data.total.toLocaleString()}</td>
+                                <td>${data.count}</td>
+                                <td class="amount">₹${average.toLocaleString()}</td>
+                                <td>${percentage}%</td>
+                            </tr>
+                        `;
+                    });
             }
 
             tbody.innerHTML = html;
@@ -1178,19 +1083,19 @@
             if (monthlyFinancialChart) monthlyFinancialChart.destroy();
             if (balanceChart) balanceChart.destroy();
 
-            // Calculate monthly data for available months only
-            const monthlyCollections = availableMonths.map(month => {
-                const key = monthMapping[month].key;
-                return Object.values(paymentData).reduce((sum, flat) => sum + (flat[key] || 0), 0);
-            });
+            // Calculate monthly data for Mar, Apr, May
+            const months = ['March', 'April', 'May'];
+            const monthKeys = ['mar', 'apr', 'may'];
+            
+            const monthlyCollections = monthKeys.map(key => 
+                Object.values(paymentData).reduce((sum, flat) => sum + (flat[key] || 0), 0)
+            );
 
-            const monthlyExpenses = availableMonths.map(month => 
+            const monthlyExpenses = ['Mar2025', 'Apr2025', 'May2025'].map(month => 
                 expenseData
                     .filter(expense => expense.Month === month)
                     .reduce((sum, expense) => sum + (parseFloat(expense.Amount) || 0), 0)
             );
-
-            const monthLabels = availableMonths.map(month => monthMapping[month].display);
 
             // Financial comparison chart
             const financialCtx = document.getElementById('financialChart');
@@ -1198,7 +1103,7 @@
                 financialChart = new Chart(financialCtx.getContext('2d'), {
                     type: 'bar',
                     data: {
-                        labels: monthLabels,
+                        labels: months,
                         datasets: [{
                             label: 'Collections',
                             data: monthlyCollections,
@@ -1228,13 +1133,13 @@
                 });
             }
 
-            // Expense breakdown chart for current month
+            // Expense breakdown chart for May
             const expenseCtx = document.getElementById('expenseChart');
             if (expenseCtx) {
-                const currentMonthExpenses = expenseData.filter(expense => expense.Month === currentMonth);
+                const mayExpenses = expenseData.filter(expense => expense.Month === 'May2025');
                 const categoryTotals = {};
                 
-                currentMonthExpenses.forEach(expense => {
+                mayExpenses.forEach(expense => {
                     const category = expense.Category || 'Other';
                     const amount = parseFloat(expense.Amount) || 0;
                     categoryTotals[category] = (categoryTotals[category] || 0) + amount;
@@ -1244,31 +1149,55 @@
                 const data = Object.values(categoryTotals);
                 const colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c', '#34495e'];
 
-                expenseChart = new Chart(expenseCtx.getContext('2d'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: data,
-                            backgroundColor: colors.slice(0, labels.length),
-                            borderWidth: 0,
-                            hoverOffset: 10
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 15,
-                                    usePointStyle: true
+                if (labels.length === 0) {
+                    // Show placeholder
+                    expenseChart = new Chart(expenseCtx.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['No Data'],
+                            datasets: [{
+                                data: [1],
+                                backgroundColor: ['#e9ecef'],
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
                                 }
                             }
                         }
-                    }
-                });
+                    });
+                } else {
+                    expenseChart = new Chart(expenseCtx.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: data,
+                                backgroundColor: colors.slice(0, labels.length),
+                                borderWidth: 0,
+                                hoverOffset: 10
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        padding: 15,
+                                        usePointStyle: true
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
             }
 
             // Monthly financial comparison
@@ -1277,7 +1206,7 @@
                 monthlyFinancialChart = new Chart(monthlyFinancialCtx.getContext('2d'), {
                     type: 'line',
                     data: {
-                        labels: monthLabels,
+                        labels: months,
                         datasets: [{
                             label: 'Income',
                             data: monthlyCollections,
@@ -1319,7 +1248,7 @@
                 balanceChart = new Chart(balanceCtx.getContext('2d'), {
                     type: 'bar',
                     data: {
-                        labels: monthLabels,
+                        labels: months,
                         datasets: [{
                             label: 'Net Balance',
                             data: netBalances,
